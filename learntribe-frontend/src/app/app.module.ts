@@ -8,12 +8,17 @@ import { HomeComponent } from './feature/home/home.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HeaderComponent} from './shared/components/header/header.component';
+import {NotFoundComponent} from './shared/components/not-found/not-found.component';
+
 
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

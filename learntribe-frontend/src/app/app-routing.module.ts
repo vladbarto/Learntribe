@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from './feature/home/home.component';
 import {LecturesComponent} from './feature/lectures/lectures.component';
 import {ContactComponent} from './feature/contact/contact.component';
+import {NotFoundComponent} from './shared/components/not-found/not-found.component';
 
 export const routes: Routes = [
   {
@@ -28,7 +29,7 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'home'
+    component: NotFoundComponent
   }
 ];
 
