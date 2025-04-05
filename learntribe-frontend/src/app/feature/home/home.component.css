@@ -1,0 +1,25 @@
+.backgnd {
+  background-color: #dff3e4;
+  height: 55vw; /* https://stackoverflow.com/questions/1347675/html-img-scaling */
+}
+
+.start-now {
+  background: rgb(140,255,152);
+  background: linear-gradient(160deg, rgba(140,255,152,1) 0%, rgba(243,180,42,1) 80%);
+  color: #483519;
+}
+
+.our-lectures {
+  background: rgb(243,180,42);
+  background: linear-gradient(160deg, rgba(243,180,42,1) 20%, rgba(229,10,229,1) 78%);
+}
+
+.backgnd-lectures-teaser {
+  background: rgb(223,243,228);
+  background: linear-gradient(180deg,
+  rgba(223,243,228,1) 0%,
+  rgba(196,214,201,1) 17%,
+  rgba(171,186,175,1) 28%,
+  rgba(98,106,100,1) 43%,
+  rgba(0,0,0,1) 61%);
+}

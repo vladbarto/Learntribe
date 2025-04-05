@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  @ViewChild('scrollTarget') scrollTarget!: ElementRef;
 
+  scrollToLectures() {
+    this.scrollTarget.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }

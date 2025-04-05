@@ -1,0 +1,9 @@
+.backgnd {
+  background-color: #dff3e4;
+  height: 55vw; /* https://stackoverflow.com/questions/1347675/html-img-scaling */
+}
+
+.padding-custom-contact {
+  padding-top: 8%;
+  color: #483519;
+}

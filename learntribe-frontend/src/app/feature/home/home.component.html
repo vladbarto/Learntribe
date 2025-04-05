@@ -1,2 +1,67 @@
 <app-header></app-header>
-<p>home works!</p>
+<div class="backgnd">
+  <div class="container pt-5 pb-3 border-bottom border-bottom-1 border-black border-2" style="color:#483519">
+    <div class="row">
+      <div class="col fw-bold" style="font-size: xxx-large">
+        <p>Simple</p>
+        <p>Powerful</p>
+        <p>Utterly great</p>
+      </div>
+
+      <div class="col fw-bold d-flex flex-column" style="margin-left: -5%; font-size: 20px">
+        <p>
+          The best platform to acquire new skills, approved and peer-reviewed by teachers
+          of the greatest universities
+          in Europe.
+        </p>
+
+        <button class="btn start-now fw-bold rounded-3" style="max-width: 150px; margin-top: 19%">Start now</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5" style="color:#483519">
+    <div class="row">
+      <div class="col-8 fw-bold fs-5">
+        <ol>
+          <li>Create an account</li>
+          <li>
+            Choose from our selection of lectures <br>
+            OR <br>
+            Make your own mix
+          </li>
+
+          <li>Reserve your place</li>
+          <li>Learn interactively</li>
+        </ol>
+      </div>
+
+      <div class="w-100 col d-flex flex-column align-items-center justify-content-end fw-bold fs-1">
+        <p>How does </p>
+        <p>it work?</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-center">
+      <button
+        class="btn fw-bold rounded-3 our-lectures"
+        style="color: #483519"
+        (click)="scrollToLectures()"
+      >Our lectures</button>
+    </div>
+  </div>
+
+  <div class="backgnd-lectures-teaser h-100">
+    <div class="container" style="padding-top: 50%">
+
+      <div>
+        <p #scrollTarget style="color: wheat">Lectures</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+

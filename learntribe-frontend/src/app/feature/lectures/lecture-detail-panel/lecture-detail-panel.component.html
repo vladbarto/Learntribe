@@ -1,0 +1,27 @@
+<!-- lecture-detail-panel.component.html -->
+<div class="detail-panel-overlay" *ngIf="isOpen" (click)="closePanel()"></div>
+<div class="detail-panel" [@slideInOut]="isOpen ? 'in' : 'out'" *ngIf="lecture">
+  <div class="panel-header">
+    <h2>{{ lecture.title }}</h2>
+    <button class="close-btn" (click)="closePanel()">×</button>
+  </div>
+
+  <div class="panel-content">
+    <p class="lecture-date">{{ lecture.date | date:'medium' }}</p>
+    <p class="lecture-instructor">Instructor: {{ lecture.instructor }}</p>
+
+    <div class="lecture-description">
+      <h3>Description</h3>
+      <p>{{ lecture.description }}</p>
+    </div>
+
+    <div class="lecture-resources" *ngIf="lecture.resources?.length">
+      <h3>Resources</h3>
+      <ul>
+        <li *ngFor="let resource of lecture.resources">
+          <a [href]="resource.url" target="_blank">{{ resource.title }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

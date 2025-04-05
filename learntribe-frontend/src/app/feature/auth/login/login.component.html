@@ -1,1 +1,46 @@
-<p>login works!</p>
+<div style="height: 80px; background-color: #3423A6">
+  <div class="container pt-3">
+    <img src="/LearntribeLogoLong_white.svg" alt="Website Logo SVG (White)" width="15%"/>
+  </div>
+</div>
+<div class="backgnd">
+  <div class="container p-5">
+    <div class="row">
+      <div class="col p-5" style="font-size: 40px; font-weight: bold">
+        <p style="color: #171738; margin: 0">Please Log in</p>
+        <p style="color: #2E1760">LearnTribe</p>
+      </div>
+
+      <div class="col mt-5 p-5 border border-black rounded-4">
+        <div class="form-check d-flex align-items-start justify-content-center flex-column">
+
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="mb-3">
+              <label for="exampleInputUsername1" class="form-label">Username</label>
+              <input type="text" formControlName="username" class="form-control" id="exampleInputUsername1"
+                     aria-describedby="usernameHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" formControlName="password2" class="form-control" id="exampleInputPassword1" contro>
+            </div>
+            @if (errorMessage) {
+              <div class="alert alert-danger" role="alert">
+                {{ errorMessage }}
+              </div>
+            }
+
+            <div style="margin-top: 80px">
+              <span>Don't have an account? </span><a href="/auth/register">Register</a>
+              <div class="d-flex justify-content-start mt-4">
+                <button type="submit" class="btn" style="background-color: #8CFF98">Login</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

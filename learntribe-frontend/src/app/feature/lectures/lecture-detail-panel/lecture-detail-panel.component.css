@@ -1,0 +1,58 @@
+/* lecture-detail-panel.component.scss */
+.detail-panel-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 998;
+}
+
+.detail-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 350px;
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.panel-content {
+  h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .lecture-date, .lecture-instructor {
+    color: #666;
+    font-size: 14px;
+  }
+}
