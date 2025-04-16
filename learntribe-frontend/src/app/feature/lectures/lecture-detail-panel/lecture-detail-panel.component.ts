@@ -1,5 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import {LectureModel} from '../../../shared/components/model/LectureModel';
+import {differenceInWeeks} from 'date-fns';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-lecture-detail-panel',
@@ -21,11 +24,19 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   ]
 })
 export class LectureDetailPanelComponent {
-  @Input() lecture: any;
+  @Input() lecture!: LectureModel;
   @Input() isOpen = false;
   @Output() close = new EventEmitter<void>();
 
   closePanel(): void {
     this.close.emit();
   }
+
+  protected readonly differenceInWeeks = differenceInWeeks;
+  datepipe : DatePipe = new DatePipe('en-RO');
+
+  public formatDate(date: Date){
+    return this.datepipe.transform(date, 'dd-MMM-YYYY');
+  }
+
 }

@@ -1,10 +1,10 @@
-<div >
+<div>
   <div class="container pt-2 pb-2">
     <div class="row">
 <!--      Col 1-->
       <div class="col">
         <div class="d-flex align-items-start justify-content-center">
-          <img src="/LearntribeLogoLong.svg" alt="Website Logo SVG" width="65%"/>
+          <a href="/home"><img src="/LearntribeLogoLong.svg" alt="Website Logo SVG" width="65%"/></a>
         </div>
       </div>
 
@@ -26,8 +26,23 @@
 <!--      Col 3-->
       <div class="col">
         <div class="d-flex align-items-center justify-content-center">
+          <div class="search-container">
+            <input
+              *ngIf="isSearchExpanded"
+              type="text"
+              class="search-input me-2"
+              placeholder="Search for a lecture..."
+              [(ngModel)]="searchQuery"
+              (keyup.enter)="onSearch()"
+              (blur)="collapseSearch()"
+            />
+            <i *ngIf="!isSearchExpanded"
+              class="m-2 fa-solid fa-magnifying-glass fa-xl"
+              (click)="toggleSearch()">
+            </i>
+          </div>
           <div>
-            <i class="m-2 fa-solid fa-magnifying-glass fa-xl"></i>
+            <i class="fa-solid fa-location-dot fa-xl" (click)="navigate.goToPage('geolocation')"></i>
           </div>
           <button class="btn border-black rounded-3 m-2" (click)="navigate.goToPage('auth/login')">
             Log in

@@ -4,6 +4,7 @@ import {HomeComponent} from './feature/home/home.component';
 import {LecturesComponent} from './feature/lectures/lectures.component';
 import {ContactComponent} from './feature/contact/contact.component';
 import {NotFoundComponent} from './shared/components/not-found/not-found.component';
+import {GeolocationComponent} from './feature/geolocation/geolocation.component';
 
 export const routes: Routes = [
   {
@@ -22,6 +23,10 @@ export const routes: Routes = [
   {
     path: 'lectures',
     component: LecturesComponent
+  },
+  {
+    path: 'geolocation',
+    component: GeolocationComponent
   },
   {
     path: 'contact',

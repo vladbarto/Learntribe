@@ -49,3 +49,7 @@ input[type="date"] {
     flex-direction: column;
   }
 }
+
+.lecture-card-wrapper {
+  width: 300px;
+}

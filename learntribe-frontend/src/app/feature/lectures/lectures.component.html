@@ -63,6 +63,10 @@
           <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault4">
           <label class="form-check-label" for="flexSwitchCheckDefault4">Electonics</label>
         </div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault5">
+          <label class="form-check-label" for="flexSwitchCheckDefault5">Retelistica</label>
+        </div>
       </div>
     </div>
 
@@ -76,14 +80,24 @@
           </label>
         </div>
 
-        <div class="container p-3" (click)="showLectureDetails(1)">
-          <app-lecture-card></app-lecture-card>
+        <div class="container d-flex flex-row flex-wrap">
+          @for (lecture of filteredLectures; track lecture.id) {
+            <div class="lecture-card-wrapper" (click)="showLectureDetails(lecture)">
+              <app-lecture-card
+                [lecture]="lecture">
+              </app-lecture-card>
+            </div>
+          } @empty {
+            <p>No lecture</p>
+          }
         </div>
+
       </div>
     </div>
   </div>
 
   <app-lecture-detail-panel
+    *ngIf="selectedLecture"
     [lecture]="selectedLecture"
     [isOpen]="isPanelOpen"
     (close)="closePanel()">

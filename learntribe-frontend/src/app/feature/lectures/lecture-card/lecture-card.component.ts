@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {LectureModel} from '../../../shared/components/model/LectureModel';
 
 @Component({
   selector: 'app-lecture-card',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './lecture-card.component.css'
 })
 export class LectureCardComponent {
-
+  @Input() lecture!: LectureModel;
 }

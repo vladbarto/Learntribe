@@ -1,0 +1,55 @@
+<app-header></app-header>
+<div style="background-color: #dff3e4; height: 100vh;">
+  <div class="geolocation-container">
+    <h2>User location</h2>
+
+    <div class="controls">
+      <button (click)="getLocation()" [disabled]="isLoading" class="btn btn-primary">
+        {{ isLoading ? 'Loading...' : 'Getting current location' }}
+      </button>
+
+      <div class="storage-options">
+        <label>Storage method:</label>
+        <div class="radio-group">
+          <label>
+            <input type="radio" name="storageType" [value]="'localStorage'"
+                   [(ngModel)]="storageType" (change)="loadSavedLocation()">
+            LocalStorage
+          </label>
+          <label>
+            <input type="radio" name="storageType" [value]="'cookies'"
+                   [(ngModel)]="storageType" (change)="loadSavedLocation()">
+            Cookies
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <div *ngIf="currentLocation" class="location-info">
+      <div class="location-card">
+        <h3>Location detected</h3>
+        <p>Latitude: <strong>{{ currentLocation.latitude }}</strong></p>
+        <p>Longitude: <strong>{{ currentLocation.longitude }}</strong></p>
+        <p>Timestamp: {{ currentLocation.timestamp | date:'medium' }}</p>
+
+        <div class="action-buttons">
+          <button (click)="openMap()" class="btn btn-secondary">
+            See on map
+          </button>
+          <button (click)="clearLocation()" class="btn btn-danger">
+            Delete location
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!currentLocation && !errorMessage && !isLoading" class="no-location">
+      <p>No location saved. Press the button to obtain location</p>
+    </div>
+  </div>
+
+</div>

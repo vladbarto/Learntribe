@@ -7,21 +7,52 @@
   </div>
 
   <div class="panel-content">
-    <p class="lecture-date">{{ lecture.date | date:'medium' }}</p>
-    <p class="lecture-instructor">Instructor: {{ lecture.instructor }}</p>
+    <p class="lecture-date">Domain: {{ lecture.domain }}</p>
 
     <div class="lecture-description">
       <h3>Description</h3>
       <p>{{ lecture.description }}</p>
     </div>
 
-    <div class="lecture-resources" *ngIf="lecture.resources?.length">
-      <h3>Resources</h3>
+    <div class="lecture-duration">
+      <h3>Duration</h3>
+      <p>{{ differenceInWeeks(lecture.endDate, lecture.startDate) }} weeks</p>
+      <li>start date: {{formatDate(lecture.startDate)}}</li>
+      <li>end date: {{formatDate(lecture.endDate)}}</li>
+    </div>
+
+    <div class="lecture-noOfMeetings">
+      <h3>Total number of meetings</h3>
+      <p>{{ lecture.numberOfSessions }} </p>
+    </div>
+
+    <div class="lecture-price">
+      <h3>Price</h3>
       <ul>
-        <li *ngFor="let resource of lecture.resources">
-          <a [href]="resource.url" target="_blank">{{ resource.title }}</a>
-        </li>
+        <li>£{{ lecture.price }}</li>
+        <li>Offer: {{lecture.offer}}%</li>
+        <li class="fw-bold">Final price: £{{lecture.price - lecture.offer*lecture.price/100}}</li>
       </ul>
     </div>
+
+    <div class="lecture-places">
+      <h3>Places left</h3>
+      <p>{{ lecture.totalPlaces - lecture.totalEnrolled }}</p>
+    </div>
+
+    <div class="lecture-languages">
+      <h3>Languages</h3>
+      @for(lang of lecture.languages; track lang) {
+        <li>{{lang}}</li>
+      }
+    </div>
+<!--    <div class="lecture-resources" *ngIf="lecture.resources?.length">-->
+<!--      <h3>Resources</h3>-->
+<!--      <ul>-->
+<!--        <li *ngFor="let resource of lecture.resources">-->
+<!--          <a [href]="resource.url" target="_blank">{{ resource.title }}</a>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
   </div>
 </div>

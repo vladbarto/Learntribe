@@ -1,3 +1,27 @@
 * {
   background-color: #8cff98;
 }
+
+.search-container {
+  position: relative;
+}
+
+.search-input {
+  width: 0;
+  opacity: 0;
+  padding: 5px;
+  transition: width 0.3s ease, opacity 0.3s ease;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-input:focus {
+  width: 200px; /* Expand width when focused */
+  opacity: 1;
+  border-color: #007bff;
+}
+
+.search-container i {
+  cursor: pointer;
+}

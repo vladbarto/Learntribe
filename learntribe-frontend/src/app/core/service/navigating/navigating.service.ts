@@ -11,4 +11,9 @@ export class NavigatingService {
   public goToPage(pageName: string): void {
     this.router.navigate([`${pageName}`]);
   }
+
+  public goToPageWithQuery(pageName: string, queryParams: any): void {
+    this.router.navigate([`${pageName}`], { queryParams });
+  }
+
 }
