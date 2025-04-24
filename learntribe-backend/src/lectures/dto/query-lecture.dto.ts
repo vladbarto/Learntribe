@@ -1,5 +1,11 @@
 // src/lectures/dto/query-lecture.dto.ts
-import { IsOptional, IsString, IsArray, IsBoolean, IsDateString } from 'class-validator';
+import {
+  IsOptional,
+  IsString,
+  IsArray,
+  IsBoolean,
+  IsDateString,
+} from 'class-validator';
 import { Transform } from 'class-transformer';
 
 export class QueryLectureDto {

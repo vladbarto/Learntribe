@@ -1,0 +1,9 @@
+.btn-enroll {
+  background-color: #f3b42a;
+  color: black;
+}
+
+.btn-unavailable {
+  background-color: gray;
+  color: white;
+}

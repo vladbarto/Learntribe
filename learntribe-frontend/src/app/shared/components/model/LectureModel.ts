@@ -10,5 +10,6 @@ export interface LectureModel {
   languages: String[],
   totalPlaces: number,
   totalEnrolled: number,
-  numberOfSessions: number
+  numberOfSessions: number,
+  isAvailable?: boolean
 }

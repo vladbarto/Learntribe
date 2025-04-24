@@ -10,6 +10,27 @@
       <p class="bg-secondary-subtle rounded-3 p-1">{{ lecture.domain }}</p>
       <p>{{ lecture.languages }}</p>
       <p>{{ lecture.totalPlaces - lecture.totalEnrolled }} places left</p>
+
+      <!-- Student only: enroll me/unavailable-->
+      <div
+        *ngIf="authService.isLoggedIn() && authService.isStudent()"
+        class="d-flex justify-content-end m-2">
+
+        <button
+          *ngIf="lecture.totalPlaces - lecture.totalEnrolled > 0 && !hasLectureEnded()"
+          class="btn btn-enroll btn-success">
+          enroll me
+        </button>
+
+        <button
+          *ngIf="lecture.totalPlaces - lecture.totalEnrolled == 0 || hasLectureEnded()"
+          class="btn btn-unavailable btn-click"
+          disabled>
+          unavailable
+        </button>
+      </div>
     </div>
+
+
   </div>
 </div>

@@ -53,3 +53,20 @@ input[type="date"] {
 .lecture-card-wrapper {
   width: 300px;
 }
+
+.unavailable {
+  opacity: 0.5;
+  pointer-events: none;
+  position: relative;
+}
+.unavailable::after {
+  content: "Unavailable";
+  color: red;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
