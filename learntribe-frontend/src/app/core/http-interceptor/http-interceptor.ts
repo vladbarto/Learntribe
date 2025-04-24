@@ -4,7 +4,7 @@ import {inject} from '@angular/core';
 import {environment} from '../../../environments/environment.development';
 
 export const requestInterceptor: HttpInterceptorFn = (req, next) => {
-  console.log('Request intercepted:', req.url); // 👈 this should now show up
+  console.log('Request intercepted:', req.url);
 
   const modifiedReq = req.clone({
     url: getUrl(req.url),

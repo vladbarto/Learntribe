@@ -24,7 +24,7 @@ exports.LecturesModule = LecturesModule = __decorate([
         ],
         controllers: [lectures_controller_1.LecturesController],
         providers: [lectures_service_1.LecturesService],
-        exports: [lectures_service_1.LecturesService]
+        exports: [lectures_service_1.LecturesService],
     })
 ], LecturesModule);
 //# sourceMappingURL=lectures.module.js.map

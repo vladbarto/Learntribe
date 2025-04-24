@@ -15,31 +15,30 @@
       <div class="col mt-5 p-5 border border-black rounded-4">
         <div class="form-check d-flex align-items-start justify-content-center flex-column">
 
-          <form [formGroup]="loginForm" (ngSubmit)="register()">
-<!--            Email field-->
+          <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <!-- Email field -->
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email</label>
               <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1"
                      aria-describedby="emailHelp">
             </div>
-<!--            Username field-->
+            <!-- Username field -->
             <div class="mb-3">
               <label for="exampleInputUsername1" class="form-label">Username</label>
               <input type="text" formControlName="username" class="form-control" id="exampleInputUsername1"
                      aria-describedby="usernameHelp">
             </div>
-<!--            Password field-->
+            <!-- Password field -->
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" formControlName="password2" class="form-control" id="exampleInputPassword1" contro>
+              <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1">
             </div>
-<!--            Role field-->
+            <!-- Role field -->
             <div class="mb-3">
               <label for="exampleInputRole1" class="form-label">Role</label>
-<!--              <select type="text" formControlName="role2" class="form-control" id="exampleInputRole1" contro>-->
-              <select name="role" id="exampleInputRole1" class="form-control" formControlName="chooseRole">
-                <option value="Teacher">Teacher</option>
-                <option value="Student">Student</option>
+              <select id="exampleInputRole1" class="form-control" formControlName="role">
+                <option value="teacher">Teacher</option>
+                <option value="student">Student</option>
               </select>
             </div>
             @if (errorMessage) {
@@ -60,5 +59,4 @@
       </div>
     </div>
   </div>
-
 </div>

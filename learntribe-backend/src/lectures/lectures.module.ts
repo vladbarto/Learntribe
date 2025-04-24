@@ -13,6 +13,6 @@ import { Lecture, LectureSchema } from './schemas/lecture.schema';
   ],
   controllers: [LecturesController],
   providers: [LecturesService],
-  exports: [LecturesService]
+  exports: [LecturesService],
 })
 export class LecturesModule {}
