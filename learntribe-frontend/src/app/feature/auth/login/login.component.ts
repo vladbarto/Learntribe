@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private navigator: NavigatingService
+    private navigator: NavigatingService,
   ) {
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required]],
@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       next: () => {
         console.log('Login successful');
         this.navigator.goToPage('home');
+
       },
       error: (error) => {
         console.error('Login failed', error);

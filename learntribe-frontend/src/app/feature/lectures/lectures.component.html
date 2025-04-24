@@ -102,4 +102,8 @@
     [isOpen]="isPanelOpen"
     (close)="closePanel()">
   </app-lecture-detail-panel>
+
+  <app-chatbot
+    *ngIf="authService.isLoggedIn() && authService.isStudent()"
+  ></app-chatbot>
 </div>

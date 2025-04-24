@@ -1,0 +1,22 @@
+<!-- Chat Bubble -->
+<div class="chat-bubble-button" (click)="toggleChat()">
+  💬
+</div>
+
+<!-- Chat Window -->
+<div class="chat-popup" *ngIf="isOpen">
+  <div class="chat-header">
+    <span>AI Assistant</span>
+    <button class="btn btn-light" (click)="toggleChat()">✖</button>
+  </div>
+
+  <div class="chat-body">
+    <div class="fw-bold d-flex justify-content-end me-2">{{chatUserRequestList[chatUserRequestList.length-1]}}</div>
+    <div class="chat-message bot" *ngIf="botResponse">{{ chatBotReponseList[chatBotReponseList.length-1] }}</div>
+  </div>
+
+  <div class="chat-input">
+    <input [(ngModel)]="userMessage" placeholder="Ask me anything..." />
+    <button (click)="send()">Send</button>
+  </div>
+</div>

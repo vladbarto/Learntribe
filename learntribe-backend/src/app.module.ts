@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { LecturesModule } from './lectures/lectures.module';
 import { AuthModule } from './auth/auth.module';
+import { ChatbotModule } from './chatbot/chatbot.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { AuthModule } from './auth/auth.module';
     ),
     LecturesModule,
     AuthModule,
+    ChatbotModule,
   ],
   controllers: [AppController],
   providers: [AppService], // Remove LecturesService from here

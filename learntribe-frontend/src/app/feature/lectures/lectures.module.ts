@@ -1,22 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LecturesComponent } from './lectures.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LectureCardComponent } from './lecture-card/lecture-card.component';
 import {SharedModule} from '../../shared/shared.module';
 import { LectureDetailPanelComponent } from './lecture-detail-panel/lecture-detail-panel.component';
+import { ChatbotComponent } from './chatbot/chatbot/chatbot.component';
 
 
 @NgModule({
   declarations: [
     LecturesComponent,
     LectureCardComponent,
-    LectureDetailPanelComponent
+    LectureDetailPanelComponent,
+    ChatbotComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ],
   exports: [
     LecturesComponent,

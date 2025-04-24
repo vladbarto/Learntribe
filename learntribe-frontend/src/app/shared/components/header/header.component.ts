@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {NavigatingService} from '../../../core/service/navigating/navigating.service';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {AuthService} from '../../../core/service/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,8 @@ export class HeaderComponent {
 
   constructor(
     public navigate: NavigatingService,
-    public dialog: MatDialog) {}
+    public dialog: MatDialog,
+    protected authService: AuthService) {}
 
   toggleSearch(): void {
     this.isSearchExpanded = !this.isSearchExpanded;

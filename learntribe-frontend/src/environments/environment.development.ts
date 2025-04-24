@@ -4,8 +4,9 @@ export const environment = {
     AUTH: {
       base: 'auth',
       login: 'login',
-      register: 'register'
-    }
+      register: 'register',
+    },
+    CHATBOT: 'chatbot'
   },
   backendUrl: 'http://localhost:3000/'
 };

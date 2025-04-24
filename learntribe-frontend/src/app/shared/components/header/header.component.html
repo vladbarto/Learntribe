@@ -44,9 +44,19 @@
           <div>
             <i class="fa-solid fa-location-dot fa-xl" (click)="navigate.goToPage('geolocation')"></i>
           </div>
-          <button class="btn border-black rounded-3 m-2" (click)="navigate.goToPage('auth/login')">
-            Log in
-          </button>
+          @if (authService.isLoggedIn()) {
+            <button class="btn border-black rounded-3 m-2 bg-danger"
+                    (click)="
+                    authService.logout();
+                    navigate.goToPage('contact');">
+              Logout
+            </button>
+          }
+          @else {
+            <button class="btn border-black rounded-3 m-2" (click)="navigate.goToPage('auth/login')">
+              Log in
+            </button>
+          }
         </div>
       </div>
     </div>
