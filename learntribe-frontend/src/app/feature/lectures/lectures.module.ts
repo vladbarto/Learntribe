@@ -6,6 +6,7 @@ import { LectureCardComponent } from './lecture-card/lecture-card.component';
 import {SharedModule} from '../../shared/shared.module';
 import { LectureDetailPanelComponent } from './lecture-detail-panel/lecture-detail-panel.component';
 import { ChatbotComponent } from './chatbot/chatbot/chatbot.component';
+import {EnrollmentsModule} from '../enrollments/enrollments.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ChatbotComponent } from './chatbot/chatbot/chatbot.component';
     CommonModule,
     ReactiveFormsModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    EnrollmentsModule
   ],
   exports: [
     LecturesComponent,

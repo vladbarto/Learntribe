@@ -37,6 +37,15 @@ let EnrollmentsController = class EnrollmentsController {
             throw new common_1.BadRequestException(err.message);
         }
     }
+    async getEnrollmentsByLecture(lectureId) {
+        try {
+            const enrollments = await this.enrollmentsService.findEnrollmentByLectureId(lectureId);
+            return enrollments;
+        }
+        catch (err) {
+            throw new common_1.BadRequestException(err.message);
+        }
+    }
 };
 exports.EnrollmentsController = EnrollmentsController;
 __decorate([
@@ -54,6 +63,13 @@ __decorate([
     __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", Promise)
 ], EnrollmentsController.prototype, "alreadyEnrolled", null);
+__decorate([
+    (0, common_1.Get)('lecture/:lectureId'),
+    __param(0, (0, common_1.Param)('lectureId')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], EnrollmentsController.prototype, "getEnrollmentsByLecture", null);
 exports.EnrollmentsController = EnrollmentsController = __decorate([
     (0, common_1.Controller)('enrollments'),
     __metadata("design:paramtypes", [enrollment_service_1.EnrollmentsService])

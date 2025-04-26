@@ -12,6 +12,12 @@ export class EnrollmentsService {
     private enrollmentModel: Model<EnrollmentDocument>,
   ) {}
 
+  async findEnrollmentByLectureId(lectureId: string): Promise<Enrollment[]> {
+    // Convert string lectureId to MongoDB ObjectId
+    const objectId = new Types.ObjectId(lectureId);
+    return this.enrollmentModel.find({ lectureId: objectId }).exec();
+  }
+
   async enroll(request: CreateEnrollmentDto): Promise<Enrollment> {
     const exists = await this.enrollmentModel.findOne(request);
     if (exists) throw new Error('Already enrolled');

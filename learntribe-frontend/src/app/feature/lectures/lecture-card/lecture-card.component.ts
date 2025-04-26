@@ -3,24 +3,25 @@ import {LectureModel} from '../../../shared/components/model/LectureModel';
 import {AuthService} from '../../../core/service/auth/auth.service';
 import {LectureService} from '../../../core/service/lecture/lecture.service';
 import {EnrollmentService} from '../../../core/service/enrollment/enrollment.service';
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-lecture-card',
   templateUrl: './lecture-card.component.html',
-  styleUrl: './lecture-card.component.css'
+  styleUrls: ['./lecture-card.component.css']
 })
-export class LectureCardComponent implements OnInit{
+export class LectureCardComponent implements OnInit {
   @Input() lecture!: LectureModel;
   today = new Date();
   enrolled: boolean = false;
+  overlayOpen: boolean = false;  // for bubble menu
+  showCalendarModal: boolean = false;
+  showStatsModal: boolean = false;
 
   constructor(
     public authService: AuthService,
     private lectureService: LectureService,
     private enrollmentService: EnrollmentService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.alreadyEnrolled();
@@ -36,10 +37,9 @@ export class LectureCardComponent implements OnInit{
     this.enrollmentService.enrollStudent(this.lecture._id).subscribe({
       next: () => {
         console.log('Enrolled successfully!');
-        // Reload lecture data to update totalEnrolled
         this.lectureService.getLectureById(this.lecture._id).subscribe({
           next: (updatedLecture) => {
-            this.lecture = updatedLecture; // update the local lecture object
+            this.lecture = updatedLecture;
             this.alreadyEnrolled();
           },
           error: (err) => {
@@ -55,7 +55,6 @@ export class LectureCardComponent implements OnInit{
 
   public alreadyEnrolled(): boolean {
     const storage = JSON.parse(sessionStorage.getItem('currentUser')!);
-
     let response = false;
 
     this.enrollmentService.getAlreadyEnrolled(this.lecture._id, storage._id).subscribe({
@@ -67,4 +66,29 @@ export class LectureCardComponent implements OnInit{
     return response;
   }
 
+  toggleOverlay() {
+    this.overlayOpen = !this.overlayOpen;
+  }
+
+  openCalendar() {
+    this.showCalendarModal = true;
+    this.overlayOpen = false;
+  }
+
+  openStats() {
+    this.showStatsModal = true;
+    this.overlayOpen = false;
+  }
+
+  closeCalendarModal() {
+    this.showCalendarModal = false;
+  }
+
+  closeStatsModal() {
+    this.showStatsModal = false;
+  }
+
+  showLectureDetails(lecture: LectureModel) {
+
+  }
 }

@@ -1,0 +1,43 @@
+.calendar-container {
+  padding: 1rem;
+  text-align: center;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 days per week */
+  gap: 0.5rem;
+}
+
+.calendar-day {
+  width: 100%;
+}
+
+.calendar-input {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+  text-align: center;
+  pointer-events: none; /* Disable clicking */
+  font-size: 1rem;
+}
+
+.highlighted {
+  background-color: #28a745; /* Green for highlighted dates */
+  color: white;
+}
+
+button {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}

@@ -3,6 +3,9 @@
     <!--  Title-->
     <div class="container pt-5">
       <p class="fw-bold fs-4">{{ lecture.title }}</p>
+<!--      <div (click)="showLectureDetails(lecture)">-->
+<!--        <p>details</p>-->
+<!--      </div>-->
     </div>
 
     <!--  Lecture details-->
@@ -10,6 +13,27 @@
       <p class="bg-secondary-subtle rounded-3 p-1">{{ lecture.domain }}</p>
       <p>{{ lecture.languages }}</p>
       <p>{{ lecture.totalPlaces - lecture.totalEnrolled }} places left</p>
+
+      <!-- Teacher Only -->
+      <div *ngIf="authService.isLoggedIn() && authService.isTeacher()">
+        <!-- Circle buttons (Calendar + Stats) -->
+        <div class="d-flex gap-2">
+          <button
+            class="btn btn-primary rounded-circle d-flex justify-content-center"
+            style="width: 40px; height: 40px; font-size: 15px;"
+            (click)="openCalendar()">
+            📅
+          </button>
+
+          <button
+            class="btn rounded-circle d-flex justify-content-center"
+            style="width: 40px; height: 40px; font-size: 15px; background-color: lightblue"
+            (click)="openStats()">
+            📊
+          </button>
+        </div>
+      </div>
+
 
       <!-- Student only: enroll me/unavailable-->
       <div
@@ -41,6 +65,36 @@
       </div>
     </div>
 
+
+    <!-- Calendar Modal -->
+    <div class="modal fade show d-block" tabindex="-1" *ngIf="showCalendarModal" style="background: rgba(0, 0, 0, 0.5);">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Enrollments Calendar</h5>
+            <button type="button" class="btn-close" (click)="closeCalendarModal()"></button>
+          </div>
+          <div class="modal-body">
+            <app-enrollment-calendar [lecture]="lecture"></app-enrollment-calendar>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Modal -->
+    <div class="modal fade show d-block" tabindex="-1" *ngIf="showStatsModal" style="background: rgba(0, 0, 0, 0.5);">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Enrollment Stats</h5>
+            <button type="button" class="btn-close" (click)="closeStatsModal()"></button>
+          </div>
+          <div class="modal-body">
+            <app-enrollment-stats [lecture]="lecture"></app-enrollment-stats>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>

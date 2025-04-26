@@ -1,5 +1,5 @@
 // src/enrollments/enrollments.controller.ts
-import { Controller, Post, Body, BadRequestException, Get, Param } from '@nestjs/common';
+import { Controller, Post, Body, BadRequestException, Get, Param, Query } from '@nestjs/common';
 import { EnrollmentsService } from './enrollment.service';
 import { CreateEnrollmentDto } from './dto/create-enrollment.dto';
 
@@ -24,6 +24,18 @@ export class EnrollmentsController {
   ) {
     try {
       return await this.enrollmentsService.alreadyEnrolled(userId, lectureId);
+    } catch (err) {
+      throw new BadRequestException(err.message);
+    }
+  }
+
+  @Get('lecture/:lectureId')
+  async getEnrollmentsByLecture(@Param('lectureId') lectureId: string) {
+    try {
+      // Call service method with a single lectureId (instead of an array)
+      const enrollments =
+        await this.enrollmentsService.findEnrollmentByLectureId(lectureId);
+      return enrollments;
     } catch (err) {
       throw new BadRequestException(err.message);
     }

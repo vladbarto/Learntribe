@@ -5,4 +5,5 @@ export declare class EnrollmentsController {
     constructor(enrollmentsService: EnrollmentsService);
     enroll(body: CreateEnrollmentDto): Promise<import("./schemas/enrollment.schema").Enrollment>;
     alreadyEnrolled(lectureId: string, userId: string): Promise<boolean>;
+    getEnrollmentsByLecture(lectureId: string): Promise<import("./schemas/enrollment.schema").Enrollment[]>;
 }

@@ -5,6 +5,7 @@ import {UserModel} from '../../../shared/components/model/UserModel';
 import {EnrollmentModel} from '../../../shared/components/model/EnrollmentModel';
 import {AuthService} from '../auth/auth.service';
 import {LectureService} from '../lecture/lecture.service';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +44,13 @@ export class EnrollmentService {
 
   public getAlreadyEnrolled(lectureId: string, userId: string) {
     return this.http.get<boolean>(`${this.baseUrl}/${this.alreadyEnrolled}/${lectureId}/${userId}`);
+  }
+
+  getEnrollmentsByLecture(lectureId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/lecture/${lectureId}`);
+  }
+
+  getEnrollmentStatsByLecture(lectureId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/enrollments/stats/lecture/${lectureId}`);
   }
 }

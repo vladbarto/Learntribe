@@ -22,6 +22,10 @@ let EnrollmentsService = class EnrollmentsService {
     constructor(enrollmentModel) {
         this.enrollmentModel = enrollmentModel;
     }
+    async findEnrollmentByLectureId(lectureId) {
+        const objectId = new mongoose_2.Types.ObjectId(lectureId);
+        return this.enrollmentModel.find({ lectureId: objectId }).exec();
+    }
     async enroll(request) {
         const exists = await this.enrollmentModel.findOne(request);
         if (exists)
