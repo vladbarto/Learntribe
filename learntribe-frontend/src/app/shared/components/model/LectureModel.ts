@@ -1,5 +1,5 @@
 export interface LectureModel {
-  id: string,
+  _id: string,
   title: string,
   description: string,
   domain: string,

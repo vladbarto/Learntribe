@@ -16,17 +16,27 @@
         *ngIf="authService.isLoggedIn() && authService.isStudent()"
         class="d-flex justify-content-end m-2">
 
-        <button
-          *ngIf="lecture.totalPlaces - lecture.totalEnrolled > 0 && !hasLectureEnded()"
-          class="btn btn-enroll btn-success">
-          enroll me
-        </button>
+        <div *ngIf="!enrolled">
+          <button
+            *ngIf="lecture.totalPlaces - lecture.totalEnrolled > 0 && !hasLectureEnded()"
+            class="btn btn-enroll btn-success"
+            (click)="enrollInLecture()">
+            enroll me
+          </button>
+
+          <button
+            *ngIf="lecture.totalPlaces - lecture.totalEnrolled == 0 || hasLectureEnded()"
+            class="btn btn-unavailable btn-click"
+            disabled>
+            unavailable
+          </button>
+        </div>
 
         <button
-          *ngIf="lecture.totalPlaces - lecture.totalEnrolled == 0 || hasLectureEnded()"
-          class="btn btn-unavailable btn-click"
+          *ngIf="enrolled"
+          class="btn btn-info"
           disabled>
-          unavailable
+          enrolled
         </button>
       </div>
     </div>

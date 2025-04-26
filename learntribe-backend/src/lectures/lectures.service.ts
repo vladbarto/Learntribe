@@ -1,7 +1,7 @@
 // src/lectures/lectures.service.ts
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import { Lecture, LectureDocument } from './schemas/lecture.schema';
 import { CreateLectureDto } from './dto/create-lecture.dto';
 import { UpdateLectureDto } from './dto/update-lecture.dto';
@@ -61,7 +61,9 @@ export class LecturesService {
   }
 
   async findOne(id: string): Promise<Lecture> {
-    const lecture = await this.lectureModel.findById(id).exec();
+    const objectId = new Types.ObjectId(id);
+
+    const lecture = await this.lectureModel.findById(objectId).exec();
 
     if (!lecture) {
       throw new NotFoundException(`Lecture with ID ${id} not found`);
@@ -99,5 +101,23 @@ export class LecturesService {
     if (result.deletedCount === 0) {
       throw new NotFoundException(`Lecture with ID ${id} not found`);
     }
+  }
+
+  async incrementTotalEnrolled(lectureId: string): Promise<Lecture> {
+    if (!Types.ObjectId.isValid(lectureId)) {
+      throw new BadRequestException('Invalid lecture ID format');
+    }
+
+    const updatedLecture = await this.lectureModel.findOneAndUpdate(
+      { _id: new Types.ObjectId(lectureId) },
+      { $inc: { totalEnrolled: 1 } },
+      { new: true }
+    ).exec();
+
+    if (!updatedLecture) {
+      throw new NotFoundException(`Lecture with ID ${lectureId} not found`);
+    }
+
+    return updatedLecture;
   }
 }

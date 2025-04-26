@@ -29,10 +29,14 @@ export class LectureService {
       });
     }
 
-    return this.http.get<LectureModel[]>(`${this.endpoint.LECTURE}/all`, { params });
+    return this.http.get<LectureModel[]>(`${this.endpoint.LECTURE.base}/all`, { params });
   }
 
   public getLectureById(id: string): Observable<LectureModel> {
-    return this.http.get<LectureModel>(`${this.endpoint.LECTURE}/${id}`);
+    return this.http.get<LectureModel>(`${this.endpoint.LECTURE.base}/${id}`);
+  }
+
+  public incrementLectureTotalEnrolled(id: string): Observable<LectureModel> {
+    return this.http.patch<LectureModel>(`${this.endpoint.LECTURE.base}/${this.endpoint.LECTURE.increment}/${id}`, {});
   }
 }

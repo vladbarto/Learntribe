@@ -14,6 +14,7 @@ const mongoose_1 = require("@nestjs/mongoose");
 const lectures_module_1 = require("./lectures/lectures.module");
 const auth_module_1 = require("./auth/auth.module");
 const chatbot_module_1 = require("./chatbot/chatbot.module");
+const enrollment_module_1 = require("./enrollments/enrollment.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -24,6 +25,7 @@ exports.AppModule = AppModule = __decorate([
             lectures_module_1.LecturesModule,
             auth_module_1.AuthModule,
             chatbot_module_1.ChatbotModule,
+            enrollment_module_1.EnrollmentModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

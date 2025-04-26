@@ -38,6 +38,13 @@ let LecturesController = class LecturesController {
     remove(id) {
         return this.lecturesService.remove(id);
     }
+    async incrementEnrollment(id) {
+        const updatedLecture = await this.lecturesService.incrementTotalEnrolled(id);
+        if (!updatedLecture) {
+            throw new common_1.NotFoundException(`Lecture with ID ${id} not found`);
+        }
+        return updatedLecture;
+    }
 };
 exports.LecturesController = LecturesController;
 __decorate([
@@ -78,6 +85,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], LecturesController.prototype, "remove", null);
+__decorate([
+    (0, common_1.Patch)('increment/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], LecturesController.prototype, "incrementEnrollment", null);
 exports.LecturesController = LecturesController = __decorate([
     (0, common_1.Controller)('lectures'),
     __metadata("design:paramtypes", [lectures_service_1.LecturesService])

@@ -10,7 +10,7 @@ import {
   Query,
   HttpCode,
   HttpStatus,
-  ValidationPipe,
+  ValidationPipe, NotFoundException,
 } from '@nestjs/common';
 import { LecturesService } from './lectures.service';
 import { CreateLectureDto } from './dto/create-lecture.dto';
@@ -52,5 +52,14 @@ export class LecturesController {
   @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id') id: string): Promise<void> {
     return this.lecturesService.remove(id);
+  }
+
+  @Patch('increment/:id')
+  async incrementEnrollment(@Param('id') id: string) {
+    const updatedLecture = await this.lecturesService.incrementTotalEnrolled(id);
+    if (!updatedLecture) {
+      throw new NotFoundException(`Lecture with ID ${id} not found`);
+    }
+    return updatedLecture;
   }
 }

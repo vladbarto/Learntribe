@@ -81,7 +81,7 @@
         </div>
 
         <div class="container d-flex flex-row flex-wrap">
-          @for (lecture of filteredLectures; track lecture.id) {
+          @for (lecture of filteredLectures; track lecture._id) {
             <div class="lecture-card-wrapper" (click)="showLectureDetails(lecture)">
               <app-lecture-card
                 [lecture]="lecture">

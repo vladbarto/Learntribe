@@ -11,4 +11,5 @@ export declare class LecturesController {
     findOne(id: string): Promise<Lecture>;
     update(id: string, updateLectureDto: UpdateLectureDto): Promise<Lecture>;
     remove(id: string): Promise<void>;
+    incrementEnrollment(id: string): Promise<Lecture>;
 }

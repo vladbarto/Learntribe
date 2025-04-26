@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { LecturesModule } from './lectures/lectures.module';
 import { AuthModule } from './auth/auth.module';
 import { ChatbotModule } from './chatbot/chatbot.module';
+import { EnrollmentModule } from './enrollments/enrollment.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { ChatbotModule } from './chatbot/chatbot.module';
     LecturesModule,
     AuthModule,
     ChatbotModule,
+    EnrollmentModule,
   ],
   controllers: [AppController],
   providers: [AppService], // Remove LecturesService from here

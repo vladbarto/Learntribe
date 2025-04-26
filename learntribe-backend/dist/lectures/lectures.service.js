@@ -56,7 +56,8 @@ let LecturesService = class LecturesService {
         return sortedLectures;
     }
     async findOne(id) {
-        const lecture = await this.lectureModel.findById(id).exec();
+        const objectId = new mongoose_2.Types.ObjectId(id);
+        const lecture = await this.lectureModel.findById(objectId).exec();
         if (!lecture) {
             throw new common_1.NotFoundException(`Lecture with ID ${id} not found`);
         }
@@ -83,6 +84,16 @@ let LecturesService = class LecturesService {
         if (result.deletedCount === 0) {
             throw new common_1.NotFoundException(`Lecture with ID ${id} not found`);
         }
+    }
+    async incrementTotalEnrolled(lectureId) {
+        if (!mongoose_2.Types.ObjectId.isValid(lectureId)) {
+            throw new common_1.BadRequestException('Invalid lecture ID format');
+        }
+        const updatedLecture = await this.lectureModel.findOneAndUpdate({ _id: new mongoose_2.Types.ObjectId(lectureId) }, { $inc: { totalEnrolled: 1 } }, { new: true }).exec();
+        if (!updatedLecture) {
+            throw new common_1.NotFoundException(`Lecture with ID ${lectureId} not found`);
+        }
+        return updatedLecture;
     }
 };
 exports.LecturesService = LecturesService;
