@@ -10,6 +10,7 @@ import {environment} from '../../../../environments/environment.development';
 export class LectureService {
 
   private endpoint = environment.endpoint;
+  private apiUrl = this.endpoint.LECTURE.base;
 
   constructor(private http: HttpClient) { }
 
@@ -38,5 +39,22 @@ export class LectureService {
 
   public incrementLectureTotalEnrolled(id: string): Observable<LectureModel> {
     return this.http.patch<LectureModel>(`${this.endpoint.LECTURE.base}/${this.endpoint.LECTURE.increment}/${id}`, {});
+  }
+
+  getLecturesByTeacher(teacherId: string): Observable<any> {
+    return this.http.get(`${this.endpoint.LECTURE.base}/${this.endpoint.LECTURE.teacher}/${teacherId}`);
+  }
+
+  createLecture(courseData: any): Observable<any> {
+    console.log(courseData);
+    return this.http.post(`${this.apiUrl}/${this.endpoint.LECTURE.one}`, courseData);
+  }
+
+  updateLecture(courseId: string, courseData: any): Observable<any> {
+    return this.http.patch(`${this.apiUrl}/${courseId}`, courseData);
+  }
+
+  deleteLecture(courseId: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${courseId}`);
   }
 }

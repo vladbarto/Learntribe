@@ -12,4 +12,5 @@ export declare class LecturesController {
     update(id: string, updateLectureDto: UpdateLectureDto): Promise<Lecture>;
     remove(id: string): Promise<void>;
     incrementEnrollment(id: string): Promise<Lecture>;
+    findByTeacher(teacherId: string): Promise<Lecture[]>;
 }

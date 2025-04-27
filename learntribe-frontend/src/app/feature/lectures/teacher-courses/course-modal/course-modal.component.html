@@ -1,0 +1,86 @@
+<div class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5);">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">{{ lecture?._id ? 'Edit Lecture' : 'Add Lecture' }}</h5>
+        <button type="button" class="btn-close" (click)="onCancel()"></button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Title -->
+        <div class="mb-3">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" [(ngModel)]="formData.title" placeholder="Enter course title" required>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+          <label for="description">Description</label>
+          <textarea class="form-control" id="description" [(ngModel)]="formData.description" placeholder="Enter course description" rows="3"></textarea>
+        </div>
+
+        <!-- Domain -->
+        <div class="mb-3">
+          <label for="domain">Domain</label>
+          <input type="text" class="form-control" id="domain" [(ngModel)]="formData.domain" placeholder="Enter course domain" required>
+        </div>
+
+        <!-- Languages -->
+        <div class="mb-3">
+          <label for="languages">Languages</label>
+          <input type="text" class="form-control" id="languages" [(ngModel)]="formData.languages" placeholder="Enter languages (comma separated)" required>
+        </div>
+
+        <!-- Total Places -->
+        <div class="mb-3">
+          <label for="totalPlaces">Total Places</label>
+          <input type="number" class="form-control" id="totalPlaces" [(ngModel)]="formData.totalPlaces" placeholder="Enter total number of places" min="1" required>
+        </div>
+
+        <!-- Start Date -->
+        <div class="mb-3">
+          <label for="startDate">Start Date</label>
+          <input type="datetime-local" class="form-control" id="startDate" [(ngModel)]="formData.startDate" required>
+        </div>
+
+        <!-- End Date -->
+        <div class="mb-3">
+          <label for="endDate">End Date</label>
+          <input type="datetime-local" class="form-control" id="endDate" [(ngModel)]="formData.endDate" required>
+        </div>
+
+        <!-- Price -->
+        <div class="mb-3">
+          <label for="price">Price</label>
+          <input type="number" class="form-control" id="price" [(ngModel)]="formData.price" placeholder="Enter price" min="0" required>
+        </div>
+
+        <!-- Offer -->
+        <div class="mb-3">
+          <label for="offer">Offer (%)</label>
+          <input type="number" class="form-control" id="offer" [(ngModel)]="formData.offer" placeholder="Enter offer percentage" min="0" max="100" required>
+        </div>
+
+        <!-- Number of Sessions -->
+        <div class="mb-3">
+          <label for="numberOfSessions">Number of Sessions</label>
+          <input type="number" class="form-control" id="numberOfSessions" [(ngModel)]="formData.numberOfSessions" placeholder="Enter number of sessions" min="1" required>
+        </div>
+
+        <!-- Availability -->
+        <div class="mb-3">
+          <label for="isAvailable">Is Available</label>
+          <input type="checkbox" id="isAvailable" [(ngModel)]="formData.isAvailable">
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+        <button class="btn btn-primary" (click)="onSave()">Save</button>
+      </div>
+
+    </div>
+  </div>
+</div>

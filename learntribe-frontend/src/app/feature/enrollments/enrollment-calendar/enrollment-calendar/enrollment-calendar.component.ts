@@ -24,16 +24,18 @@ export class EnrollmentCalendarComponent implements OnInit {
   loadMonthData(): void {
     this.monthDays = this.generateMonthDays(this.currentMonth);
 
-    this.enrollmentService.getEnrollmentsByLecture(this.lecture._id).subscribe(enrollments => {
-      this.enrolledDates.clear();
+    if (this.lecture._id != null) {
+      this.enrollmentService.getEnrollmentsByLecture(this.lecture._id).subscribe(enrollments => {
+        this.enrolledDates.clear();
 
-      // Only if there are enrollments
-      if (enrollments.length > 0) {
-        const startDate = new Date(this.lecture.startDate);
-        const endDate = new Date(this.lecture.endDate);
-        this.addDatesInRange(startDate, endDate);
-      }
-    });
+        // Only if there are enrollments
+        if (enrollments.length > 0) {
+          const startDate = new Date(this.lecture.startDate);
+          const endDate = new Date(this.lecture.endDate);
+          this.addDatesInRange(startDate, endDate);
+        }
+      });
+    }
   }
 
   addDatesInRange(startDate: Date, endDate: Date): void {

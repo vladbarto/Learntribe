@@ -3,6 +3,8 @@ export const environment = {
     LECTURE: {
       base: 'lectures',
       increment: 'increment',
+      teacher: 'teacher',
+      one: 'one'
     },
     AUTH: {
       base: 'auth',

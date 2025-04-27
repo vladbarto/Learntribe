@@ -62,4 +62,9 @@ export class LecturesController {
     }
     return updatedLecture;
   }
+
+  @Get('teacher/:teacherId')
+  findByTeacher(@Param('teacherId') teacherId: string): Promise<Lecture[]> {
+    return this.lecturesService.findByTeacher(teacherId);
+  }
 }

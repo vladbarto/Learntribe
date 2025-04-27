@@ -5,6 +5,7 @@ import {LecturesComponent} from './feature/lectures/lectures.component';
 import {ContactComponent} from './feature/contact/contact.component';
 import {NotFoundComponent} from './shared/components/not-found/not-found.component';
 import {GeolocationComponent} from './feature/geolocation/geolocation.component';
+import {TeacherCoursesComponent} from './feature/lectures/teacher-courses/teacher-courses.component';
 
 export const routes: Routes = [
   {
@@ -31,6 +32,10 @@ export const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent
+  },
+  {
+    path: 'lectures/dashboard',
+    component: TeacherCoursesComponent
   },
   {
     path: '**',

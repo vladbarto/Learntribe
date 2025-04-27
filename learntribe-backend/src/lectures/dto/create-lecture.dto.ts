@@ -57,4 +57,7 @@ export class CreateLectureDto {
   @IsNumber()
   @IsPositive()
   totalEnrolled: number;
+
+  @IsString()
+  teacherId: string;
 }

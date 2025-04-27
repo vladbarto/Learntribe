@@ -10,4 +10,5 @@ export declare class CreateLectureDto {
     languages: string[];
     totalPlaces: number;
     totalEnrolled: number;
+    teacherId: string;
 }

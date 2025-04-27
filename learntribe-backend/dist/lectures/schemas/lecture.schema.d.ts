@@ -12,6 +12,7 @@ export declare class Lecture {
     languages: string[];
     totalPlaces: number;
     totalEnrolled: number;
+    teacherId: string;
 }
 export declare const LectureSchema: import("mongoose").Schema<Lecture, import("mongoose").Model<Lecture, any, any, any, import("mongoose").Document<unknown, any, Lecture> & Lecture & {
     _id: import("mongoose").Types.ObjectId;

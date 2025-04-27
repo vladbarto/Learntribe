@@ -23,6 +23,7 @@ class CreateLectureDto {
     languages;
     totalPlaces;
     totalEnrolled;
+    teacherId;
 }
 exports.CreateLectureDto = CreateLectureDto;
 __decorate([
@@ -83,4 +84,8 @@ __decorate([
     (0, class_validator_1.IsPositive)(),
     __metadata("design:type", Number)
 ], CreateLectureDto.prototype, "totalEnrolled", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateLectureDto.prototype, "teacherId", void 0);
 //# sourceMappingURL=create-lecture.dto.js.map

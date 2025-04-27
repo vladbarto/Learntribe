@@ -5,6 +5,7 @@ import {LectureService} from '../../core/service/lecture/lecture.service';
 import {LectureModel} from '../../shared/components/model/LectureModel';
 import {ActivatedRoute} from '@angular/router';
 import {AuthService} from '../../core/service/auth/auth.service';
+import {NavigatingService} from '../../core/service/navigating/navigating.service';
 
 @Component({
   selector: 'app-lectures',
@@ -32,7 +33,8 @@ export class LecturesComponent implements OnInit {
     private fb: FormBuilder,
     private lectureService: LectureService,
     private route: ActivatedRoute,
-    public authService: AuthService
+    public authService: AuthService,
+    public navigator: NavigatingService
   ) {
     this.dateRangeForm = this.fb.group({
       startDate: ['', Validators.required],

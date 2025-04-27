@@ -23,6 +23,7 @@ let Lecture = class Lecture {
     languages;
     totalPlaces;
     totalEnrolled;
+    teacherId;
 };
 exports.Lecture = Lecture;
 __decorate([
@@ -69,6 +70,10 @@ __decorate([
     (0, mongoose_1.Prop)({ required: false, min: 0, default: 0 }),
     __metadata("design:type", Number)
 ], Lecture.prototype, "totalEnrolled", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Lecture.prototype, "teacherId", void 0);
 exports.Lecture = Lecture = __decorate([
     (0, mongoose_1.Schema)({ timestamps: true })
 ], Lecture);

@@ -95,6 +95,9 @@ let LecturesService = class LecturesService {
         }
         return updatedLecture;
     }
+    async findByTeacher(teacherId) {
+        return this.lectureModel.find({ teacherId: new mongoose_2.Types.ObjectId(teacherId) }).exec();
+    }
 };
 exports.LecturesService = LecturesService;
 exports.LecturesService = LecturesService = __decorate([

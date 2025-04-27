@@ -34,34 +34,41 @@ export class LectureCardComponent implements OnInit {
   }
 
   public enrollInLecture() {
-    this.enrollmentService.enrollStudent(this.lecture._id).subscribe({
-      next: () => {
-        console.log('Enrolled successfully!');
-        this.lectureService.getLectureById(this.lecture._id).subscribe({
-          next: (updatedLecture) => {
-            this.lecture = updatedLecture;
-            this.alreadyEnrolled();
-          },
-          error: (err) => {
-            console.error('Failed to reload lecture: ' + err.message);
+    if (this.lecture._id != null) {
+      this.enrollmentService.enrollStudent(this.lecture._id).subscribe({
+        next: () => {
+          console.log('Enrolled successfully!');
+          if (this.lecture._id != null) {
+            this.lectureService.getLectureById(this.lecture._id).subscribe({
+              next: (updatedLecture) => {
+                this.lecture = updatedLecture;
+                this.alreadyEnrolled();
+              },
+              error: (err) => {
+                console.error('Failed to reload lecture: ' + err.message);
+              }
+            });
           }
-        });
-      },
-      error: (err) => {
-        console.error('Enrollment failed: ' + err.message);
-      }
-    });
+        },
+        error: (err) => {
+          console.error('Enrollment failed: ' + err.message);
+        }
+      });
+    }
   }
 
   public alreadyEnrolled(): boolean {
     const storage = JSON.parse(sessionStorage.getItem('currentUser')!);
     let response = false;
 
-    this.enrollmentService.getAlreadyEnrolled(this.lecture._id, storage._id).subscribe({
-      next: value => {
-        this.enrolled = value;
-      }
-    });
+
+    if (this.lecture._id != null) {
+      this.enrollmentService.getAlreadyEnrolled(this.lecture._id, storage._id).subscribe({
+        next: value => {
+          this.enrolled = value;
+        }
+      });
+    }
 
     return response;
   }

@@ -7,6 +7,8 @@ import {SharedModule} from '../../shared/shared.module';
 import { LectureDetailPanelComponent } from './lecture-detail-panel/lecture-detail-panel.component';
 import { ChatbotComponent } from './chatbot/chatbot/chatbot.component';
 import {EnrollmentsModule} from '../enrollments/enrollments.module';
+import { TeacherCoursesComponent } from './teacher-courses/teacher-courses.component';
+import { CourseModalComponent } from './teacher-courses/course-modal/course-modal.component';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import {EnrollmentsModule} from '../enrollments/enrollments.module';
     LecturesComponent,
     LectureCardComponent,
     LectureDetailPanelComponent,
-    ChatbotComponent
+    ChatbotComponent,
+    TeacherCoursesComponent,
+    CourseModalComponent
   ],
   imports: [
     CommonModule,

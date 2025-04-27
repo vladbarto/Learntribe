@@ -12,4 +12,5 @@ export declare class LecturesService {
     update(id: string, updateLectureDto: UpdateLectureDto): Promise<Lecture>;
     remove(id: string): Promise<void>;
     incrementTotalEnrolled(lectureId: string): Promise<Lecture>;
+    findByTeacher(teacherId: string): Promise<Lecture[]>;
 }

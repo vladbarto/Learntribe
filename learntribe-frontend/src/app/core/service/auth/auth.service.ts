@@ -61,4 +61,8 @@ export class AuthService {
   isTeacher(): boolean {
     return this.currentUserValue?.role === 'teacher';
   }
+
+  getUserId() {
+    return JSON.parse(sessionStorage.getItem('currentUser')!)._id;
+  }
 }

@@ -1,0 +1,41 @@
+<div class="container p-4">
+
+  <h2>My Courses</h2>
+
+  <!-- Add new course button -->
+  <button class="btn btn-success mb-3" (click)="openAddModal()">➕ Add Course</button>
+
+  <!-- Courses table -->
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Domain</th>
+      <th>Languages</th>
+      <th>Total Places</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let course of courses">
+      <td>{{ course.title }}</td>
+      <td>{{ course.domain }}</td>
+      <td>{{ course.languages }}</td>
+      <td>{{ course.totalPlaces }}</td>
+      <td>
+        <button class="btn btn-primary btn-sm" (click)="openEditModal(course)">✏️</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteCourse(course._id)">🗑️</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Modals for Add/Edit -->
+  <app-course-modal
+    *ngIf="showCourseModal"
+    [editingCourse]="editingCourse"
+    (saved)="refreshCourses()"
+    (closed)="closeCourseModal()">
+  </app-course-modal>
+
+</div>

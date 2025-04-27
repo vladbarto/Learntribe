@@ -27,16 +27,18 @@ export class EnrollmentStatsComponent implements OnChanges {
 
   loadEnrollments(): void {
     console.log('Sending request for enrollments...');
-    this.enrollmentService.getEnrollmentsByLecture(this.lecture._id).subscribe({
-      next: (data) => {
-        console.log('Fetched enrollments:', data); // <<< CHECK: prints response array
-        this.enrollments = data.map((e: any) => ({
-          enrollmentDate: new Date(e.enrollmentDate)
-        }));
-        this.drawChart();
-      },
-      error: (err) => console.error('Failed to load enrollments for stats:', err.message)
-    });
+    if (this.lecture._id != null) {
+      this.enrollmentService.getEnrollmentsByLecture(this.lecture._id).subscribe({
+        next: (data) => {
+          console.log('Fetched enrollments:', data); // <<< CHECK: prints response array
+          this.enrollments = data.map((e: any) => ({
+            enrollmentDate: new Date(e.enrollmentDate)
+          }));
+          this.drawChart();
+        },
+        error: (err) => console.error('Failed to load enrollments for stats:', err.message)
+      });
+    }
   }
 
   private drawChart(): void {

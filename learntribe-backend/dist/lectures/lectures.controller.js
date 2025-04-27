@@ -45,6 +45,9 @@ let LecturesController = class LecturesController {
         }
         return updatedLecture;
     }
+    findByTeacher(teacherId) {
+        return this.lecturesService.findByTeacher(teacherId);
+    }
 };
 exports.LecturesController = LecturesController;
 __decorate([
@@ -92,6 +95,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], LecturesController.prototype, "incrementEnrollment", null);
+__decorate([
+    (0, common_1.Get)('teacher/:teacherId'),
+    __param(0, (0, common_1.Param)('teacherId')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], LecturesController.prototype, "findByTeacher", null);
 exports.LecturesController = LecturesController = __decorate([
     (0, common_1.Controller)('lectures'),
     __metadata("design:paramtypes", [lectures_service_1.LecturesService])

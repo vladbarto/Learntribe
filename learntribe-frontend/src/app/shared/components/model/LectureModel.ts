@@ -1,5 +1,5 @@
 export interface LectureModel {
-  _id: string,
+  _id?: string,
   title: string,
   description: string,
   domain: string,
@@ -11,5 +11,6 @@ export interface LectureModel {
   totalPlaces: number,
   totalEnrolled: number,
   numberOfSessions: number,
-  isAvailable?: boolean
+  isAvailable?: boolean,
+  teacherId?: string
 }

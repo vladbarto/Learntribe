@@ -38,6 +38,9 @@ export class Lecture {
 
   @Prop({ required: false, min: 0, default: 0})
   totalEnrolled: number;
+
+  @Prop()
+  teacherId: string;
 }
 
 export const LectureSchema = SchemaFactory.createForClass(Lecture);

@@ -120,4 +120,8 @@ export class LecturesService {
 
     return updatedLecture;
   }
+
+  async findByTeacher(teacherId: string): Promise<Lecture[]> {
+    return this.lectureModel.find({ teacherId: new Types.ObjectId(teacherId) }).exec();
+  }
 }
