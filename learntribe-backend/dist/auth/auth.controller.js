@@ -27,7 +27,7 @@ let AuthController = class AuthController {
         if (!user) {
             throw new common_1.UnauthorizedException('Invalid credentials');
         }
-        return { user };
+        return this.authService.login(user);
     }
     async register(registerDto) {
         try {

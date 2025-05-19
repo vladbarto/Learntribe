@@ -1,12 +1,14 @@
 // src/enrollments/enrollments.controller.ts
-import { Controller, Post, Body, BadRequestException, Get, Param, Query } from '@nestjs/common';
+import { Controller, Post, Body, BadRequestException, Get, Param, Query, UseGuards } from '@nestjs/common';
 import { EnrollmentsService } from './enrollment.service';
 import { CreateEnrollmentDto } from './dto/create-enrollment.dto';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('enrollments')
 export class EnrollmentsController {
   constructor(private readonly enrollmentsService: EnrollmentsService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Post('enroll')
   async enroll(@Body() body: CreateEnrollmentDto) {
     try {
@@ -17,6 +19,7 @@ export class EnrollmentsController {
     }
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('already-enrolled/:lectureId/:userId')
   async alreadyEnrolled(
     @Param('lectureId') lectureId: string,
@@ -29,6 +32,7 @@ export class EnrollmentsController {
     }
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('lecture/:lectureId')
   async getEnrollmentsByLecture(@Param('lectureId') lectureId: string) {
     try {

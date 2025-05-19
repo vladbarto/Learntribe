@@ -5,11 +5,12 @@ import {
   UnauthorizedException,
   BadRequestException,
   ConflictException,
-  HttpCode, HttpStatus,
+  HttpCode, HttpStatus, UseGuards,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
+import { JwtAuthGuard } from './jwt-auth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -22,7 +23,7 @@ export class AuthController {
     if (!user) {
       throw new UnauthorizedException('Invalid credentials');
     }
-    return { user };
+    return this.authService.login(user);
   }
 
   @Post('register')

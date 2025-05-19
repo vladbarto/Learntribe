@@ -17,14 +17,18 @@ const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 const user_schema_1 = require("./schemas/user.schema");
+const bcrypt = require("bcrypt");
+const jwt_1 = require("@nestjs/jwt");
 let AuthService = class AuthService {
     userModel;
-    constructor(userModel) {
+    jwtService;
+    constructor(userModel, jwtService) {
         this.userModel = userModel;
+        this.jwtService = jwtService;
     }
     async validateUser(username, password) {
         const user = await this.userModel.findOne({ username }).exec();
-        if (user && user.password === password) {
+        if (user && await bcrypt.compare(password, user.password)) {
             const { password, ...result } = user.toObject();
             return result;
         }
@@ -40,10 +44,11 @@ let AuthService = class AuthService {
         if (existingUser) {
             throw new Error('Numele de utilizator sau email-ul exista deja');
         }
+        const hashedPassword = await bcrypt.hash(registerDto.password, 10);
         const newUser = new this.userModel({
             email: registerDto.email,
             username: registerDto.username,
-            password: registerDto.password,
+            password: hashedPassword,
             role: registerDto.role,
         });
         const savedUser = await newUser.save();
@@ -56,11 +61,19 @@ let AuthService = class AuthService {
     async findUserByEmail(email) {
         return this.userModel.findOne({ email }).exec();
     }
+    async login(user) {
+        const payload = { username: user.username, sub: user._id };
+        return {
+            access_token: this.jwtService.sign(payload),
+            user,
+        };
+    }
 };
 exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, mongoose_1.InjectModel)(user_schema_1.User.name)),
-    __metadata("design:paramtypes", [mongoose_2.Model])
+    __metadata("design:paramtypes", [mongoose_2.Model,
+        jwt_1.JwtService])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map

@@ -18,6 +18,7 @@ const lectures_service_1 = require("./lectures.service");
 const create_lecture_dto_1 = require("./dto/create-lecture.dto");
 const update_lecture_dto_1 = require("./dto/update-lecture.dto");
 const query_lecture_dto_1 = require("./dto/query-lecture.dto");
+const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 let LecturesController = class LecturesController {
     lecturesService;
     constructor(lecturesService) {
@@ -51,6 +52,7 @@ let LecturesController = class LecturesController {
 };
 exports.LecturesController = LecturesController;
 __decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Post)('one'),
     (0, common_1.HttpCode)(common_1.HttpStatus.CREATED),
     __param(0, (0, common_1.Body)()),
@@ -73,6 +75,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], LecturesController.prototype, "findOne", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Patch)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
@@ -81,6 +84,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], LecturesController.prototype, "update", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Delete)(':id'),
     (0, common_1.HttpCode)(common_1.HttpStatus.NO_CONTENT),
     __param(0, (0, common_1.Param)('id')),
@@ -89,6 +93,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], LecturesController.prototype, "remove", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Patch)('increment/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
@@ -96,6 +101,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], LecturesController.prototype, "incrementEnrollment", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Get)('teacher/:teacherId'),
     __param(0, (0, common_1.Param)('teacherId')),
     __metadata("design:type", Function),

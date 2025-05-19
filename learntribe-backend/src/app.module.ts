@@ -10,7 +10,7 @@ import { EnrollmentModule } from './enrollments/enrollment.module';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb+srv://vlad:vlad@cluster0.2peqhho.mongodb.net/learntribe?retryWrites=true&w=majority&appName=Cluster0',
+      'Your_Link_To_MongoDB_Server',
     ),
     LecturesModule,
     AuthModule,

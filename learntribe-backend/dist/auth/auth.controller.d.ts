@@ -5,6 +5,7 @@ export declare class AuthController {
     private authService;
     constructor(authService: AuthService);
     login(loginDto: LoginUserDto): Promise<{
+        access_token: string;
         user: any;
     }>;
     register(registerDto: RegisterUserDto): Promise<{

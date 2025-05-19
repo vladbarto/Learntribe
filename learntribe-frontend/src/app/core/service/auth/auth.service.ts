@@ -30,8 +30,8 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}/${environment.endpoint.AUTH.login}`, { username, password })
       .pipe(
         tap(response => {
-          // Salvează utilizatorul în session storage și actualizează BehaviorSubject
-          if (response && response.user) {
+          if (response?.access_token) {
+            sessionStorage.setItem('token', response.access_token);
             sessionStorage.setItem('currentUser', JSON.stringify(response.user));
             this.currentUserSubject.next(response.user);
           }
@@ -41,7 +41,7 @@ export class AuthService {
 
   logout() {
     // Șterge utilizatorul din session storage
-    sessionStorage.removeItem('currentUser');
+    sessionStorage.clear();
     this.currentUserSubject.next(null);
     this.router.navigate(['/home']);
   }

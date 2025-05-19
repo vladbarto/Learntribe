@@ -16,6 +16,7 @@ exports.EnrollmentsController = void 0;
 const common_1 = require("@nestjs/common");
 const enrollment_service_1 = require("./enrollment.service");
 const create_enrollment_dto_1 = require("./dto/create-enrollment.dto");
+const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 let EnrollmentsController = class EnrollmentsController {
     enrollmentsService;
     constructor(enrollmentsService) {
@@ -49,6 +50,7 @@ let EnrollmentsController = class EnrollmentsController {
 };
 exports.EnrollmentsController = EnrollmentsController;
 __decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Post)('enroll'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -56,6 +58,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], EnrollmentsController.prototype, "enroll", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Get)('already-enrolled/:lectureId/:userId'),
     __param(0, (0, common_1.Param)('lectureId')),
     __param(1, (0, common_1.Param)('userId')),
@@ -64,6 +67,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], EnrollmentsController.prototype, "alreadyEnrolled", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Get)('lecture/:lectureId'),
     __param(0, (0, common_1.Param)('lectureId')),
     __metadata("design:type", Function),
